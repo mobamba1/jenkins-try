@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body_content %}
+    <div class='form'>
+        <form method='POST' action=''>
+	{{ form.hidden_tag() }}
+            {{ form.title.label }}
+            {{ form.title }}
+            <br>
+            {{ form.content.label }}
+            {{ form.content }}
+	    {% if form.content.errors %}
+        <!-- surround the displayed errors in a error div tag, this can then be styled later to be red etc. -->
+            <div class="error">
+        <!-- for each error in the errors for the first_name input field -->
+            {% for error in form.content.errors %}
+        <!-- display the error -->
+            <span>{{ error }}</span>
+        <!-- end the for-loop -->
+            {% endfor %}
+            </div>
+        <!-- end the if statement -->
+            {% endif %}
+            <br>
+            {{ form.submit }}
+        </form>
+    </div>
+{% endblock %}
